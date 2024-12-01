@@ -119,7 +119,7 @@ int bh1750_power_down(bh1750_t *const me)
 	int ret = 0;
 	
 	/**/
-	uint8_t cmd = (uint8_t)BH1750_CMD_POWER_ON;
+	uint8_t cmd = (uint8_t)BH1750_CMD_POWER_DOWN;
 	ret = bh1750_reg_write(&cmd, 1, &me->i2c_dev);
 	
 	if (ret != 0) {
@@ -139,7 +139,7 @@ int bh1750_power_on(bh1750_t *const me)
 	int ret = 0;
 	
 	/**/
-	uint8_t cmd = (uint8_t)BH1750_CMD_POWER_DOWN;
+	uint8_t cmd = (uint8_t)BH1750_CMD_POWER_ON;
 	ret = bh1750_reg_write(&cmd, 1, &me->i2c_dev);
 	
 	if (ret != 0) {
@@ -236,7 +236,7 @@ int bh1750_get_light_intensity(bh1750_t *const me, bh1750_meas_mode_t meas_mode,
 	}
 	
     if ((meas_mode == BH1750_MEAS_MODE_CONTINUE_4LX_RES) || (meas_mode == BH1750_MEAS_MODE_ONETIME_4LX_RES)) {
-        delay_ms(30);
+        delay_ms(24);
     } else {
         delay_ms(180);
     }
